@@ -68,6 +68,8 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
+autocmd BufWrite *.rb :call DeleteTrailingWS()
+autocmd BufWrite *.js :call DeleteTrailingWS()
 
 function ShowSpaces(...)
   let @/='\v(\s+$)|( +\ze\t)'
@@ -92,10 +94,21 @@ nnoremap <F12>     :ShowSpaces 1<CR>
 nnoremap <S-F12>   m`:TrimSpaces<CR>``
 vnoremap <S-F12>   :TrimSpaces<CR>
 
-" trailing whitespace
+" highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" reload all buffers
+function ReloadAllBuffers()
+  set noconfirm
+  bufdo e!
+  set confirm
+endfunction
+nmap <leader>gr call ReloadAllBuffers()
+
+" Ctrl-P stuff
+set wildignore+=*.class,*.git/*
