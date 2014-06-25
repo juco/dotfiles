@@ -5,6 +5,7 @@
 " * nerdtree
 " * ctrlp
 " * vim-airline
+" * EasyGrep
 "
 " References:
 " http://amix.dk/vim/vimrc.html
@@ -60,6 +61,9 @@ map <space> zz
 map n nzz
 map N Nzz
 
+" Leader keys
+nnoremap <leader>p :CtrlPTag<cr>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -109,6 +113,3 @@ function ReloadAllBuffers()
   set confirm
 endfunction
 nmap <leader>gr call ReloadAllBuffers()
-
-" Ctrl-P stuff
-set wildignore+=*.class,*.git/*
