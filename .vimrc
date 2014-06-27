@@ -64,6 +64,9 @@ map N Nzz
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>
 
+" Rebind escape
+imap jj <Esc>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
