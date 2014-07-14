@@ -1,11 +1,25 @@
 "     My .vimrc
 " ___________________
 " Dependencies:
-" * Pathogen
-" * nerdtree
-" * ctrlp
-" * vim-airline
-" * EasyGrep
+" * Pathogen            - Package management
+" * tlib_vim            - Util functions (dep)
+" * nerdtree            - Project tree
+" * ctrlp               - Fuzzy file
+" * vim-airline         - Sexy status bar
+" * EasyGrep            - Project file searching
+" * nerdcommenter       - Multi line commenting
+" * syntasic            - Syntax checking
+" * vim-addon-mw-utils  - vim-snipmate dep
+" * vim-fugitive        - Git wrapper
+" * vim-snipmate        - Snippet manager
+" * vim-snippets        - Useful snippets
+"
+" Lang specific
+" -------------
+"  * vim-rails
+"  * vim-less
+"  * vim-scala
+"  * vim-coffee-script
 "
 " References:
 " http://amix.dk/vim/vimrc.html
