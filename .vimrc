@@ -48,7 +48,7 @@ set autoread     " auto reload files when externally changed
 
 " ruler
 set colorcolumn=80
-highlight ColorColumn ctermbg=LightBlue
+highlight ColorColumn ctermbg=LightGrey
 
 " Smart way to move between windows
 map <C-j> <C-W>j
