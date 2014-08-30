@@ -1,49 +1,50 @@
 "     My .vimrc
 " ___________________
-" Dependencies:
-" * Pathogen            - Package management
-" * tlib_vim            - Util functions (dep)
-" * nerdtree            - Project tree
-" * ctrlp               - Fuzzy file
-" * vim-airline         - Sexy status bar
-" * EasyGrep            - Project file searching
-" * nerdcommenter       - Multi line commenting
-" * syntasic            - Syntax checking
-" * vim-addon-mw-utils  - vim-snipmate dep
-" * vim-fugitive        - Git wrapper
-" * vim-snipmate        - Snippet manager
-" * vim-snippets        - Useful snippets
-"
-" Lang specific
-" -------------
-"  * vim-rails
-"  * vim-less
-"  * vim-scala
-"  * vim-coffee-script
-"
-" References:
-" http://amix.dk/vim/vimrc.html
-" http://nvie.com/posts/how-i-boosted-my-vim/
+" Credit to:
+" - http://amix.dk/vim/vimrc.html
+" - http://nvie.com/posts/how-i-boosted-my-vim/
 
-syntax on
+" Vundle setup
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Plugin list
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'              " File browser
+Plugin 'altercation/vim-colors-solarized' " Colours
+Plugin 'bling/vim-airline'                " Sexy status bar
+Plugin 'kien/ctrlp.vim'                   " Fuzzy searching
+Plugin 'scrooloose/nerdcommenter'         " Multi-line comments
+Plugin 'vim-scripts/EasyGrep'             " Project search
+Plugin 'scrooloose/syntastic'             " Syntax checking
+Plugin 'tpope/vim-fugitive'               " Git wrapper
+
+" Language specific
+Plugin 'tpope/vim-rails'                  " Rails FTW
+Plugin 'kchmck/vim-coffee-script'         " Coffeescript
+Plugin 'groenewege/vim-less'              " LESS
+Plugin 'cakebaker/scss-syntax.vim'        " SCSS
+Plugin 'derekwyatt/vim-scala'             " Scala
+call vundle#end()
 filetype plugin indent on
+
+" Colorscheme
+let g:solarized_termtrans = 1
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+set background=dark
+colorscheme solarized
+syntax on
+"colorscheme Tomorrow-Night
 
 " remap LEADER
 let mapleader=","
-
-" pathogen
-execute pathogen#infect()
-
-"colorscheme asu1dark
-"colorscheme 256-grayvim
-colorscheme Tomorrow-Night
-
 " Tabs
 set expandtab
 set tabstop=2
 set shiftwidth=2
-
-" Some crucial settings
+" Some more crucial settings
 set number       " show line numbers
 set nowrap
 set showmatch    " show matching parenthesis
@@ -62,7 +63,7 @@ set autoread     " auto reload files when externally changed
 
 " ruler
 set colorcolumn=80
-highlight ColorColumn ctermbg=LightGrey
+"highlight ColorColumn ctermbg=LightGrey
 
 " Smart way to move between windows
 map <C-j> <C-W>j
