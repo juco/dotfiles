@@ -20,6 +20,7 @@ Plugin 'vim-scripts/EasyGrep'             " Project search
 Plugin 'scrooloose/syntastic'             " Syntax checking
 Plugin 'tpope/vim-fugitive'               " Git wrapper
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
+Plugin 'rizzatti/dash.vim'                " Dashing
 
 " Language specific
 Plugin 'tpope/vim-rails'                  " Rails FTW
@@ -78,7 +79,8 @@ map n nzz
 map N Nzz
 
 " Leader keys
-nnoremap <leader>p :CtrlPTag<cr>
+nnoremap <leader>p :CtrlPTag<cr>          " ctrl-p current word
+:nmap <silent> <leader>d <Plug>DashSearch " Dashing current word
 
 " Rebind escape
 imap jj <Esc>
