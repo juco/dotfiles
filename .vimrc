@@ -85,6 +85,9 @@ nnoremap <leader>p :CtrlPTag<cr>          " ctrl-p current word
 " Rebind escape
 imap jj <Esc>
 
+" Sudo save
+cmap w!! w !sudo tee >/dev/null %
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
