@@ -21,6 +21,8 @@ Plugin 'scrooloose/syntastic'             " Syntax checking
 Plugin 'tpope/vim-fugitive'               " Git wrapper
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plugin 'rizzatti/dash.vim'                " Dashing
+Plugin 'Valloric/YouCompleteMe'           " You Complete Me
+Plugin 'SirVer/ultisnips'                 " Snippets
 
 " Language specific
 Plugin 'tpope/vim-rails'                  " Rails FTW
@@ -67,6 +69,9 @@ set autoread     " auto reload files when externally changed
 set colorcolumn=80
 "highlight ColorColumn ctermbg=LightGrey
 
+" System clipboard
+"set clipboard=unnamed
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -80,13 +85,11 @@ map N Nzz
 
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>          " ctrl-p current word
+nnoremap <leader>o :NERDTree<cr>
 :nmap <silent> <leader>d <Plug>DashSearch " Dashing current word
 
 " Rebind escape
 imap jj <Esc>
-
-" Sudo save
-cmap w!! w !sudo tee >/dev/null %
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -138,6 +141,7 @@ function ReloadAllBuffers()
 endfunction
 nmap <leader>gr call ReloadAllBuffers()
 
+" Seemless tmux windows swithing
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
@@ -162,3 +166,27 @@ else
   map <C-k> <C-w>k
   map <C-l> <C-w>l
 endif
+
+" Ultisnips config
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+" this mapping Enter key to <C-y> to chose the current highlight item
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
