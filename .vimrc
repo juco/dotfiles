@@ -91,6 +91,8 @@ nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
 nnoremap <leader>o :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>y :YRShow<cr>             " Show clipboard
 nnoremap <leader>h :noh<cr>                " Cancel highlight
+
+let g:yankring_replace_n_pkey = "<c-o>"
 :nmap <silent> <leader>d <Plug>DashSearch " Dashing current word
 
 " Rebind escape
