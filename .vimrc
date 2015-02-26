@@ -25,6 +25,8 @@ Plugin 'rizzatti/dash.vim'                " Dashing
 Plugin 'Valloric/YouCompleteMe'           " You Complete Me
 Plugin 'SirVer/ultisnips'                 " Snippets
 Plugin 'vim-scripts/YankRing.vim'         " Yank list
+Plugin 'Shougo/vimproc.vim'               " Async tasks
+Plugin 'Shougo/unite.vim'                 " Unite
 
 " Language specific
 Plugin 'tpope/vim-rails'                  " Rails FTW
@@ -45,12 +47,11 @@ colorscheme solarized
 syntax on
 "colorscheme Tomorrow-Night
 
-" remap LEADER
-let mapleader=","
 " Tabs
 set expandtab
 set tabstop=2
 set shiftwidth=2
+"
 " Some more crucial settings
 set number       " show line numbers
 set nowrap
@@ -92,7 +93,10 @@ nnoremap <leader>o :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>y :YRShow<cr>             " Show clipboard
 nnoremap <leader>h :noh<cr>                " Cancel highlight
 
-let g:yankring_replace_n_pkey = "<c-o>"
+let mapleader="," " Remap the leader key
+
+let g:yankring_replace_n_pkey = "<c-o>"    " Replace yankring's C-P to prevent collision with CtrlP
+
 :nmap <silent> <leader>d <Plug>DashSearch " Dashing current word
 
 " Rebind escape
@@ -133,12 +137,12 @@ nnoremap <S-F12>   m`:TrimSpaces<CR>``
 vnoremap <S-F12>   :TrimSpaces<CR>
 
 " highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"match ExtraWhitespace /\s\+$/
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd BufWinLeave * call clearmatches()
 
 " reload all buffers
 function ReloadAllBuffers()
