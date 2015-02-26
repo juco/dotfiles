@@ -1,0 +1,15 @@
+" The prefix key.
+nnoremap    [unite]   <Nop>
+nmap    f [unite]
+
+nnoremap <silent> [unite]f  :<C-u>UniteWithCurrentDir
+        \ -buffer-name=files buffer bookmark file<CR>
+
+nnoremap <silent> [unite]g :<C-u>UniteWithCurrentDir
+        \ -buffer-name=files file_rec/git<CR>
+
+nnoremap <silent> [unite]l :<C-u>UniteWithCurrentDir
+        \ -buffer-name=files line<CR>
+
+nnoremap  [unite]u  :<C-u>Unite source<CR>
+
