@@ -10,7 +10,7 @@ call vundle#begin()
 " Plugin list
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'              " File browser
-Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
+Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule them all
 Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'bling/vim-airline'                " Sexy status bar
 Plugin 'kien/ctrlp.vim'                   " Fuzzy searching
