@@ -2,6 +2,21 @@
 
 My dotfiles
 
+# Install
+After a `PluginInstall`.
+
+Compile vimproc:
+
+`cd ~/.vim/bundle/vimproc.vim && make`
+
+Install YouCompleteMe
+
+`cd ~/.vim/bundle/YouCompleteMe && ./install.sh`
+
+## Dependencies
+* the_silver_searcher
+* reattach-to-user-namespace
+
 ## Notes
 zsh theme: `pygmalion`
 
