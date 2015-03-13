@@ -73,7 +73,7 @@ set colorcolumn=80
 "highlight ColorColumn ctermbg=LightGrey
 
 " System clipboard
-"set clipboard=unnamed
+set clipboard=unnamed
 
 " Remap the leader key
 let mapleader=","
