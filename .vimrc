@@ -14,6 +14,7 @@ Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule the all
 Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'bling/vim-airline'                " Sexy status bar
 Plugin 'kien/ctrlp.vim'                   " Fuzzy searching
+Plugin 'tacahiroy/ctrlp-funky'            " Fuzy method searching
 Plugin 'scrooloose/nerdcommenter'         " Multi-line comments
 Plugin 'vim-scripts/EasyGrep'             " Project search
 Plugin 'scrooloose/syntastic'             " Syntax checking
@@ -22,7 +23,6 @@ Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plugin 'rizzatti/dash.vim'                " Dashing
 Plugin 'Valloric/YouCompleteMe'           " You Complete Me
 Plugin 'SirVer/ultisnips'                 " Snippets
-Plugin 'vim-scripts/YankRing.vim'         " Yank list
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
 
@@ -33,6 +33,7 @@ Plugin 'groenewege/vim-less'              " LESS
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'tabmerge'                         " Merging tabs to splits
+Plugin 'godlygeek/tabular'                " Markdown
 call vundle#end()
 filetype plugin indent on
 
@@ -89,6 +90,7 @@ map N Nzz
 nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
 nnoremap <leader>o :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>h :noh<cr>                " Cancel highlight
+nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
 
 :nmap <silent> <leader>d <Plug>DashSearch  " Dashing current word
 
