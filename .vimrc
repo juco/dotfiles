@@ -34,6 +34,7 @@ Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'tabmerge'                         " Merging tabs to splits
 Plugin 'godlygeek/tabular'                " Markdown
+Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 call vundle#end()
 filetype plugin indent on
 
@@ -106,3 +107,4 @@ source ~/.vimunite
 source ~/.vimtmux
 source ~/.vimutilsnips
 source ~/.vimspaces
+source ~/.matchtag

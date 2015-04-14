@@ -1,0 +1,3 @@
+let g:mta_use_matchparen_group = 0
+let g:mta_set_default_matchtag_color = 0
+highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
