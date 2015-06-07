@@ -33,7 +33,7 @@ Plugin 'groenewege/vim-less'              " LESS
 Plugin 'cakebaker/scss-syntax.vim'        " SCSS
 Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'tabmerge'                         " Merging tabs to splits
-Plugin 'godlygeek/tabular'                " Markdown
+Plugin 'godlygeek/tabular'                " Alignment
 Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 call vundle#end()
 filetype plugin indent on
@@ -86,6 +86,9 @@ imap jj <Esc>
 map <space> zz
 map n nzz
 map N Nzz
+
+" ES6 javascript syntax highlighting
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
