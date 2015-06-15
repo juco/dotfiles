@@ -110,4 +110,5 @@ source ~/.vimunite
 source ~/.vimtmux
 source ~/.vimutilsnips
 source ~/.vimspaces
+source ~/.vimsyntastic
 source ~/.matchtag
