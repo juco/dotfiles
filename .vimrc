@@ -25,6 +25,7 @@ Plugin 'Valloric/YouCompleteMe'           " You Complete Me
 Plugin 'SirVer/ultisnips'                 " Snippets
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
+Plugin 'tpope/vim-obsession'              " Vim sessions
 
 " Language specific
 Plugin 'tpope/vim-rails'                  " Rails FTW
@@ -95,7 +96,6 @@ nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
 nnoremap <leader>o :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>h :noh<cr>                " Cancel highlight
 nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
-:nnoremap <leader>c :!ctags -R .<CR>
 
 :nmap <silent> <leader>d <Plug>DashSearch  " Dashing current word
 
