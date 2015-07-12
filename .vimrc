@@ -46,6 +46,7 @@ let g:solarized_contrast = "high"
 set background=dark
 colorscheme solarized
 syntax on
+hi TabLineSel ctermfg=2 ctermbg=8
 "colorscheme Tomorrow-Night
 
 " Tabs
