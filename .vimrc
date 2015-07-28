@@ -36,6 +36,8 @@ Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'tabmerge'                         " Merging tabs to splits
 Plugin 'godlygeek/tabular'                " Alignment
 Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
+Plugin 'skammer/vim-css-color'            " CSS colouring
+
 call vundle#end()
 filetype plugin indent on
 
