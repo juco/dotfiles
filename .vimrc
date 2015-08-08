@@ -37,6 +37,7 @@ Plugin 'tabmerge'                         " Merging tabs to splits
 Plugin 'godlygeek/tabular'                " Alignment
 Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 Plugin 'skammer/vim-css-color'            " CSS colouring
+Plugin 'airblade/vim-gitgutter'           " Git Gutter
 
 call vundle#end()
 filetype plugin indent on
