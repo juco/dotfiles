@@ -38,6 +38,7 @@ Plugin 'godlygeek/tabular'                " Alignment
 Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 Plugin 'skammer/vim-css-color'            " CSS colouring
 Plugin 'airblade/vim-gitgutter'           " Git Gutter
+Plugin 'jelera/vim-javascript-syntax'     " Javascript syntax
 
 call vundle#end()
 filetype plugin indent on
