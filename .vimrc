@@ -39,6 +39,7 @@ Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 Plugin 'skammer/vim-css-color'            " CSS colouring
 Plugin 'airblade/vim-gitgutter'           " Git Gutter
 Plugin 'jelera/vim-javascript-syntax'     " Javascript syntax
+Plugin 'mxw/vim-jsx'                      " JSX
 
 call vundle#end()
 filetype plugin indent on
