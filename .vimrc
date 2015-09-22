@@ -39,7 +39,6 @@ Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
 Plugin 'skammer/vim-css-color'            " CSS colouring
 Plugin 'airblade/vim-gitgutter'           " Git Gutter
 Plugin 'jelera/vim-javascript-syntax'     " Javascript syntax
-Plugin 'mxw/vim-jsx'                      " JSX
 
 call vundle#end()
 filetype plugin indent on
@@ -93,6 +92,11 @@ imap jj <Esc>
 map <space> zz
 map n nzz
 map N Nzz
+
+" For those typos
+cmap W w
+cmap WQ wq
+cmap Wq wq
 
 " ES6 javascript syntax highlighting
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
