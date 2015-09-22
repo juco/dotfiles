@@ -1,0 +1,6 @@
+[core]
+	editor = mvim -v
+	excludesfile = /Users/juco/.gitignore_global
+[user]
+	name = juco
+	email = julian@juco.co.uk
