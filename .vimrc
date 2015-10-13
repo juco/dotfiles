@@ -103,7 +103,7 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
-nnoremap <leader>o :NERDTreeTabsToggle<cr> " NERDTree toggle
+nnoremap <leader>, :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>h :noh<cr>                " Cancel highlight
 nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
 
