@@ -13,16 +13,12 @@ Plugin 'scrooloose/nerdtree'              " File browser
 Plugin 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule them all
 Plugin 'altercation/vim-colors-solarized' " Colours
 Plugin 'bling/vim-airline'                " Sexy status bar
-Plugin 'kien/ctrlp.vim'                   " Fuzzy searching
-Plugin 'tacahiroy/ctrlp-funky'            " Fuzy method searching
 Plugin 'scrooloose/nerdcommenter'         " Multi-line comments
-Plugin 'vim-scripts/EasyGrep'             " Project search
 Plugin 'scrooloose/syntastic'             " Syntax checking
 Plugin 'tpope/vim-fugitive'               " Git wrapper
 Plugin 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
 Plugin 'rizzatti/dash.vim'                " Dashing
 Plugin 'Valloric/YouCompleteMe'           " You Complete Me
-Plugin 'SirVer/ultisnips'                 " Snippets
 Plugin 'Shougo/vimproc.vim'               " Async tasks
 Plugin 'Shougo/unite.vim'                 " Unite
 Plugin 'tpope/vim-obsession'              " Vim sessions
@@ -36,7 +32,6 @@ Plugin 'derekwyatt/vim-scala'             " Scala
 Plugin 'tabmerge'                         " Merging tabs to splits
 Plugin 'godlygeek/tabular'                " Alignment
 Plugin 'Valloric/MatchTagAlways'          " HTML Matching tags
-Plugin 'skammer/vim-css-color'            " CSS colouring
 Plugin 'airblade/vim-gitgutter'           " Git Gutter
 Plugin 'jelera/vim-javascript-syntax'     " Javascript syntax
 
@@ -119,7 +114,6 @@ nmap <leader>gr call ReloadAllBuffers()
 
 source ~/.vimunite
 source ~/.vimtmux
-source ~/.vimutilsnips
 source ~/.vimspaces
 source ~/.vimsyntastic
 source ~/.vimmatchtags
