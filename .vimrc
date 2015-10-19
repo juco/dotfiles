@@ -7,6 +7,7 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 " Plugin list
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'              " File browser
