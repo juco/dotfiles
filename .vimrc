@@ -69,6 +69,7 @@ set ai           " auto indent
 set si           " smart indent
 set wrap         " wrap lines
 set autoread     " auto reload files when externally changed
+set mouse=nicr   " mouse scroll
 
 " ruler
 set colorcolumn=80
