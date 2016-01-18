@@ -14,8 +14,9 @@ Install YouCompleteMe
 `cd ~/.vim/bundle/YouCompleteMe && ./install.sh`
 
 ## Dependencies
-* the_silver_searcher
-* reattach-to-user-namespace
+* [https://github.com/junegunn/vim-plug](vim-plug)
+* [https://github.com/ggreer/the_silver_searcher](the_silver_searcher)
+* [https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard](reattach-to-user-namespace)
 
 ## Notes
 zsh theme: `pygmalion`
