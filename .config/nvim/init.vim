@@ -10,31 +10,32 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
-Plug 'scrooloose/nerdtree'              " File browser
-Plug 'jistr/vim-nerdtree-tabs'          " One NERDTree to rule them all
-Plug 'bling/vim-airline'                " Sexy status bar
-Plug 'scrooloose/nerdcommenter'         " Multi-line comments
-Plug 'scrooloose/syntastic'             " Syntax checking
-Plug 'tpope/vim-fugitive'               " Git wrapper
-Plug 'christoomey/vim-tmux-navigator'   " Pane navigation tmux/vim
-Plug 'rizzatti/dash.vim'                " Dashing
-Plug 'Valloric/YouCompleteMe'           " You Complete Me
-Plug 'Shougo/vimproc.vim'               " Async tasks
-Plug 'Shougo/unite.vim'                 " Unite
-Plug 'morhetz/gruvbox'                  " colorscheme
-"Plug 'altercation/vim-colors-solarized' " Colours
+Plug 'scrooloose/nerdtree'                  " File browser
+Plug 'jistr/vim-nerdtree-tabs'              " One NERDTree to rule them all
+Plug 'bling/vim-airline'                    " Sexy status bar
+Plug 'vim-airline/vim-airline-themes'     " Airline themese
+Plug 'scrooloose/nerdcommenter'             " Multi-line comments
+Plug 'scrooloose/syntastic'                 " Syntax checking
+Plug 'tpope/vim-fugitive'                   " Git wrapper
+Plug 'christoomey/vim-tmux-navigator'       " Pane navigation tmux/vim
+Plug 'rizzatti/dash.vim'                    " Dashing
+Plug 'Valloric/YouCompleteMe'               " You Complete Me
+Plug 'Shougo/vimproc.vim'                   " Async tasks
+Plug 'Shougo/unite.vim'                     " Unite
+Plug 'morhetz/gruvbox'                      " colorscheme
 
 " Language specific
-Plug 'tpope/vim-rails'                  " Rails FTW
-Plug 'kchmck/vim-coffee-script'         " Coffeescript
-Plug 'groenewege/vim-less'              " LESS
-Plug 'cakebaker/scss-syntax.vim'        " SCSS
-Plug 'derekwyatt/vim-scala'             " Scala
-Plug 'tabmerge'                         " Merging tabs to splits
-Plug 'godlygeek/tabular'                " Alignment
-Plug 'Valloric/MatchTagAlways'          " HTML Matching tags
-Plug 'airblade/vim-gitgutter'           " Git Gutter
-Plug 'jelera/vim-javascript-syntax'     " Javascript syntax
+Plug 'tpope/vim-rails'                      " Rails FTW
+Plug 'kchmck/vim-coffee-script'             " Coffeescript
+Plug 'groenewege/vim-less'                  " LESS
+Plug 'cakebaker/scss-syntax.vim'            " SCSS
+Plug 'derekwyatt/vim-scala'                 " Scala
+Plug 'tabmerge'                             " Merging tabs to splits
+Plug 'godlygeek/tabular'                    " Alignment
+Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
+Plug 'airblade/vim-gitgutter'               " Git Gutter
+Plug 'jelera/vim-javascript-syntax'         " Javascript syntax
+Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 
 "call vundle#end()
 call plug#end()
@@ -49,7 +50,7 @@ set background=dark
 "colorscheme solarized
 colorscheme gruvbox
 syntax on
-hi TabLineSel ctermfg=black ctermbg=191
+hi TabLineSel ctermfg=2 ctermbg=8
 :let g:airline_theme='wombat'
 
 " Tabs

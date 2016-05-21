@@ -7,11 +7,11 @@ After a `PluginInstall`.
 
 Compile vimproc:
 
-`cd ~/.vim/bundle/vimproc.vim && make`
+`cd ~/.config/nvim/plugged/vimproc.vim && make`
 
 Install YouCompleteMe
 
-`cd ~/.vim/bundle/YouCompleteMe && ./install.sh`
+`cd ~/.config/nvim/plugged/YouCompleteMe && ./install.sh --tern-completer`
 
 ## Dependencies
 * [https://github.com/junegunn/vim-plug](vim-plug)
