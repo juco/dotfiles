@@ -50,8 +50,8 @@ set background=dark
 "colorscheme solarized
 colorscheme gruvbox
 syntax on
-hi TabLineSel ctermfg=2 ctermbg=8
-:let g:airline_theme='wombat'
+hi TabLineSel ctermfg=black ctermbg=191
+let g:airline_theme='wombat'
 
 " Tabs
 set expandtab
