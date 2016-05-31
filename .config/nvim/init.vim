@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'                  " File browser
 Plug 'jistr/vim-nerdtree-tabs'              " One NERDTree to rule them all
 Plug 'bling/vim-airline'                    " Sexy status bar
-Plug 'vim-airline/vim-airline-themes'     " Airline themese
+Plug 'vim-airline/vim-airline-themes'       " Airline themese
 Plug 'scrooloose/nerdcommenter'             " Multi-line comments
 Plug 'scrooloose/syntastic'                 " Syntax checking
 Plug 'tpope/vim-fugitive'                   " Git wrapper
@@ -30,7 +30,6 @@ Plug 'kchmck/vim-coffee-script'             " Coffeescript
 Plug 'groenewege/vim-less'                  " LESS
 Plug 'cakebaker/scss-syntax.vim'            " SCSS
 Plug 'derekwyatt/vim-scala'                 " Scala
-Plug 'tabmerge'                             " Merging tabs to splits
 Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'airblade/vim-gitgutter'               " Git Gutter
