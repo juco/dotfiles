@@ -34,7 +34,8 @@ Plug 'tabmerge'                             " Merging tabs to splits
 Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'airblade/vim-gitgutter'               " Git Gutter
-Plug 'jelera/vim-javascript-syntax'         " Javascript syntax
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 
 "call vundle#end()
