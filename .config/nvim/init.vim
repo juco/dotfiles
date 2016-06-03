@@ -33,8 +33,8 @@ Plug 'derekwyatt/vim-scala'                 " Scala
 Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'airblade/vim-gitgutter'               " Git Gutter
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'              " JS syntax etc.
+Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 
 "call vundle#end()
@@ -50,8 +50,8 @@ set background=dark
 "colorscheme solarized
 colorscheme gruvbox
 syntax on
-hi TabLineSel ctermfg=black ctermbg=191
-let g:airline_theme='wombat'
+hi TabLineSel ctermfg=2 ctermbg=8
+:let g:airline_theme='wombat'
 
 " Tabs
 set expandtab
@@ -101,6 +101,9 @@ cmap Wq wq
 
 " ES6 javascript syntax highlighting
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
+" JSX plugin for .js files
+let g:jsx_ext_required = 0
 
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
