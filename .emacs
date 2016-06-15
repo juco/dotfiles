@@ -12,7 +12,7 @@
  '(ns-use-native-fullscreen nil)
  '(package-selected-packages
    (quote
-    (tern-auto-complete tern js2-mode zenburn-theme powerline powerline-evil helm-ls-git helm evil sublime-themes))))
+    (evil-magit magit tern-auto-complete tern js2-mode zenburn-theme powerline powerline-evil helm-ls-git helm evil sublime-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -20,9 +20,18 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; Toolbars suck
+(tool-bar-mode -1)
+
+;; Theme
+(load-theme `zenburn t)
+
 ;; Boot with evil mode
 (require 'evil)
 (evil-mode 1)
+
+;; Stop insert with 'jj'
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 ;; Js indent level
 (setq js-indent-level 2)
@@ -43,9 +52,6 @@
 
 ;; line numbers
 (global-linum-mode t)
-
-;; Load theme
-(load-theme 'zenburn t)
 
 ;; Toggle maximize
 (toggle-frame-maximized)
