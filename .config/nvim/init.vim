@@ -58,6 +58,9 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+" Crappy macOS Sierra copy/paste hack
+set clipboard=unnamed
+
 " Some more crucial settings
 set number       " show line numbers
 set nowrap
