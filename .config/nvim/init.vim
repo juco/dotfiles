@@ -39,6 +39,7 @@ Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 Plug 'osyo-manga/vim-monster'               " Ruby completion
+Plug 'tpope/vim-endwise'                    " Matching end's
 
 "call vundle#end()
 call plug#end()
