@@ -1,24 +1,26 @@
 # dotfiles
 
-My dotfiles
+My dotfiles. Probably of little use to you.
 
 # Install
-After a `PluginInstall`.
+Python3 support:
 
-Compile vimproc:
+* `brew install python3`
+* `pip3 install neovim`
+* `pip3 install --upgrade neovim`
 
-`cd ~/.config/nvim/plugged/vimproc.vim && make`
+Verify with `:echo has("python3")`
 
-Install YouCompleteMe
+Ruby support:
+`gem install neovim`
 
-`cd ~/.config/nvim/plugged/YouCompleteMe && ./install.sh --tern-completer`
+For vim-monster:
+`gem install rcodetools`
 
 ## Dependencies
 * [https://github.com/junegunn/vim-plug](vim-plug)
 * [https://github.com/ggreer/the_silver_searcher](the_silver_searcher)
 * [https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard](reattach-to-user-namespace)
-
-For vim-monster `gem install rcodetools`
 
 ## Notes
 zsh theme: `pygmalion`

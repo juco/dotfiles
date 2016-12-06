@@ -2,17 +2,15 @@
 "    Juco .vimrc
 " ___________________
 
-" Vundle setup
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
+
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
 Plug 'scrooloose/nerdtree'                  " File browser
 Plug 'jistr/vim-nerdtree-tabs'              " One NERDTree to rule them all
-Plug 'bling/vim-airline'                    " Sexy status bar
+Plug 'vim-airline/vim-airline'              " Sexy status bar
 Plug 'vim-airline/vim-airline-themes'       " Airline themese
 Plug 'scrooloose/nerdcommenter'             " Multi-line comments
 Plug 'scrooloose/syntastic'                 " Syntax checking
@@ -41,26 +39,27 @@ Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 Plug 'osyo-manga/vim-monster'               " Ruby completion
 Plug 'tpope/vim-endwise'                    " Matching end's
 
-"call vundle#end()
 call plug#end()
 filetype plugin indent on
 
 " Colorscheme
-"let g:solarized_termtrans = 1
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
 set background=dark
 "colorscheme Tomorrow-Night
 "colorscheme solarized
 colorscheme gruvbox
+:let g:airline_theme='wombat'
+
+" Going to want these
 syntax on
 hi TabLineSel ctermfg=2 ctermbg=8
-:let g:airline_theme='wombat'
 
 " Tabs
 set expandtab
 set tabstop=2
 set shiftwidth=2
+
+" System clipboard
+set clipboard=unnamed
 
 " Crappy macOS Sierra copy/paste hack
 set clipboard=unnamed
@@ -85,10 +84,6 @@ set mouse=nicr   " mouse scroll
 
 " ruler
 set colorcolumn=80
-"highlight ColorColumn ctermbg=LightGrey
-
-" System clipboard
-set clipboard=unnamed
 
 " Remap the leader key
 let mapleader=","
