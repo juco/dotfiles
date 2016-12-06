@@ -112,6 +112,9 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 " JSX plugin for .js files
 let g:jsx_ext_required = 0
 
+" Enable the matchit macro
+runtime macros/matchit.vim
+
 " Leader keys
 nnoremap <leader>p :CtrlPTag<cr>           " ctrl-p current word
 nnoremap <leader>, :NERDTreeTabsToggle<cr> " NERDTree toggle
