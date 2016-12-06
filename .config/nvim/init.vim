@@ -23,6 +23,8 @@ Plug 'Valloric/YouCompleteMe'               " You Complete Me
 Plug 'Shougo/vimproc.vim'                   " Async tasks
 Plug 'Shougo/unite.vim'                     " Unite
 Plug 'morhetz/gruvbox'                      " colorscheme
+Plug 'vim-airline'                          " status bar
+Plug 'Shougo/deoplete.nvim'                 " neovim completion
 
 " Language specific
 Plug 'tpope/vim-rails'                      " Rails FTW
@@ -36,6 +38,7 @@ Plug 'airblade/vim-gitgutter'               " Git Gutter
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
+Plug 'osyo-manga/vim-monster'               " Ruby completion
 
 "call vundle#end()
 call plug#end()

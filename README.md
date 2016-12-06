@@ -18,6 +18,8 @@ Install YouCompleteMe
 * [https://github.com/ggreer/the_silver_searcher](the_silver_searcher)
 * [https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard](reattach-to-user-namespace)
 
+For vim-monster `gem install rcodetools`
+
 ## Notes
 zsh theme: `pygmalion`
 
