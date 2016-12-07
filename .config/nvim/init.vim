@@ -17,41 +17,52 @@ Plug 'scrooloose/syntastic'                 " Syntax checking
 Plug 'tpope/vim-fugitive'                   " Git wrapper
 Plug 'christoomey/vim-tmux-navigator'       " Pane navigation tmux/vim
 Plug 'rizzatti/dash.vim'                    " Dashing
-Plug 'Valloric/YouCompleteMe'               " You Complete Me
+"Plug 'Valloric/YouCompleteMe'               " You Complete Me
+Plug 'vim-airline'                          " status bar
+Plug 'airblade/vim-gitgutter'               " Git Gutter
+
+" Shougo <3
 Plug 'Shougo/vimproc.vim'                   " Async tasks
 Plug 'Shougo/unite.vim'                     " Unite
-Plug 'morhetz/gruvbox'                      " colorscheme
-Plug 'vim-airline'                          " status bar
 Plug 'Shougo/deoplete.nvim'                 " neovim completion
 
-" Language specific
+"Plug 'ryanoasis/vim-devicons'               " icon fonts
+
+" Colours
+Plug 'mhartington/oceanic-next'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+
+" -Language specific-
 Plug 'tpope/vim-rails'                      " Rails FTW
+Plug 'osyo-manga/vim-monster'               " Ruby completion
+Plug 'tpope/vim-endwise'                    " Matching end's
 Plug 'kchmck/vim-coffee-script'             " Coffeescript
 Plug 'groenewege/vim-less'                  " LESS
 Plug 'cakebaker/scss-syntax.vim'            " SCSS
 Plug 'derekwyatt/vim-scala'                 " Scala
 Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
-Plug 'airblade/vim-gitgutter'               " Git Gutter
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
-Plug 'osyo-manga/vim-monster'               " Ruby completion
-Plug 'tpope/vim-endwise'                    " Matching end's
-
 call plug#end()
+
 filetype plugin indent on
 
-" Colorscheme
-set background=dark
+" Colour scheme - oh so indecisive
+syntax enable
+
+" Old
 "colorscheme Tomorrow-Night
 "colorscheme solarized
-colorscheme gruvbox
-:let g:airline_theme='wombat'
+"colorscheme gruvbox   <-
+":let g:airline_theme='wombat'
 
-" Going to want these
-syntax on
-hi TabLineSel ctermfg=2 ctermbg=8
+" Current
+colorscheme OceanicNext
+let g:airline_theme='oceanicnext'
 
 " Tabs
 set expandtab
@@ -100,6 +111,17 @@ map N Nzz
 cmap W w
 cmap WQ wq
 cmap Wq wq
+
+" Icon fonts
+"set encoding=utf8
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
+
+" JS library syntax highlighting
+let g:used_javascript_libs = 'underscore,angularjs,react'
+
+" vim-airline tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 
 " ES6 javascript syntax highlighting
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
