@@ -20,6 +20,7 @@ Plug 'rizzatti/dash.vim'                    " Dashing
 "Plug 'Valloric/YouCompleteMe'               " You Complete Me
 Plug 'vim-airline'                          " status bar
 Plug 'airblade/vim-gitgutter'               " Git Gutter
+Plug 'Yggdroot/indentLine'                  " Lines showing indents
 
 " Shougo <3
 Plug 'Shougo/vimproc.vim'                   " Async tasks
