@@ -143,6 +143,10 @@ nnoremap <leader>, :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>h :noh<cr>                " Cancel highlight
 nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
 
+" Beginning / End of line
+noremap H ^
+noremap L $
+
 :nmap <silent> <leader>d <Plug>DashSearch  " Dashing current word
 
 " reload all buffers
