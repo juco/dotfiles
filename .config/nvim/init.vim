@@ -25,7 +25,7 @@ Plug 'Yggdroot/indentLine'                  " Lines showing indents
 " Shougo <3
 Plug 'Shougo/vimproc.vim'                   " Async tasks
 Plug 'Shougo/unite.vim'                     " Unite
-Plug 'Shougo/deoplete.nvim'                 " neovim completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Plug 'ryanoasis/vim-devicons'               " icon fonts
 
@@ -36,8 +36,8 @@ Plug 'othree/html5.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 
 " -Language specific-
+Plug 'vim-ruby/vim-ruby'                    " Some ruby sexyness
 Plug 'tpope/vim-rails'                      " Rails FTW
-Plug 'osyo-manga/vim-monster'               " Ruby completion
 Plug 'tpope/vim-endwise'                    " Matching end's
 Plug 'kchmck/vim-coffee-script'             " Coffeescript
 Plug 'groenewege/vim-less'                  " LESS
@@ -48,6 +48,8 @@ Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
+
+
 call plug#end()
 
 filetype plugin indent on
@@ -64,6 +66,8 @@ syntax enable
 " Current
 colorscheme OceanicNext
 let g:airline_theme='oceanicnext'
+
+call deoplete#enable()
 
 " Tabs
 set expandtab
@@ -114,8 +118,8 @@ cmap WQ wq
 cmap Wq wq
 
 " Icon fonts
-"set encoding=utf8
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
+set encoding=utf8
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete:h11
 
 " JS library syntax highlighting
 let g:used_javascript_libs = 'underscore,angularjs,react'
