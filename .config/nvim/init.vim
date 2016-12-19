@@ -48,7 +48,7 @@ Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
-
+Plug 'sunaku/vim-ruby-minitest'             " Minitest omnicomplete
 
 call plug#end()
 
@@ -156,6 +156,9 @@ function ReloadAllBuffers()
   set confirm
 endfunction
 nmap <leader>gr call ReloadAllBuffers()
+
+" Complete minitest - C-X C-U
+set completefunc=syntaxcomplete#Complete
 
 source ~/.vimunite
 source ~/.vimtmux
