@@ -143,6 +143,9 @@ nnoremap <leader>, :NERDTreeTabsToggle<cr> " NERDTree toggle
 nnoremap <leader>h :noh<cr>                " Cancel highlight
 nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
 
+" Hack to get <C-h> working with neovim https://github.com/christoomey/vim-tmux-navigator#it-doesnt-work-in-neovim-specifically-c-h
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
+
 " Beginning / End of line
 noremap H ^
 noremap L $
