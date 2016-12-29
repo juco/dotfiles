@@ -49,6 +49,7 @@ Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
 Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 Plug 'sunaku/vim-ruby-minitest'             " Minitest omnicomplete
+Plug 'osyo-manga/vim-monster'               " Ruby omnicomplete
 
 call plug#end()
 
@@ -145,10 +146,6 @@ nnoremap <leader>fu :CtrlPFunky<cr>        " Funky method search
 
 " Hack to get <C-h> working with neovim https://github.com/christoomey/vim-tmux-navigator#it-doesnt-work-in-neovim-specifically-c-h
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
-
-" Beginning / End of line
-noremap H ^
-noremap L $
 
 :nmap <silent> <leader>d <Plug>DashSearch  " Dashing current word
 
