@@ -67,6 +67,9 @@ syntax enable
 colorscheme OceanicNext
 let g:airline_theme='oceanicnext'
 
+" Airline fonts
+let g:airline_powerline_fonts = 1
+
 call deoplete#enable()
 
 " Tabs
