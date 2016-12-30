@@ -18,7 +18,6 @@ Plug 'tpope/vim-fugitive'                   " Git wrapper
 Plug 'christoomey/vim-tmux-navigator'       " Pane navigation tmux/vim
 Plug 'rizzatti/dash.vim'                    " Dashing
 "Plug 'Valloric/YouCompleteMe'               " You Complete Me
-Plug 'vim-airline'                          " status bar
 Plug 'airblade/vim-gitgutter'               " Git Gutter
 Plug 'Yggdroot/indentLine'                  " Lines showing indents
 
@@ -27,7 +26,7 @@ Plug 'Shougo/vimproc.vim'                   " Async tasks
 Plug 'Shougo/unite.vim'                     " Unite
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-"Plug 'ryanoasis/vim-devicons'               " icon fonts
+Plug 'ryanoasis/vim-devicons'               " icon fonts
 
 " Colours
 Plug 'mhartington/oceanic-next'

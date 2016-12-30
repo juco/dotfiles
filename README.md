@@ -18,12 +18,15 @@ For vim-monster:
 `gem install rcodetools`
 
 ## Dependencies
-* [https://github.com/junegunn/vim-plug](vim-plug)
-* [https://github.com/ggreer/the_silver_searcher](the_silver_searcher)
-* [https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard](reattach-to-user-namespace)
+* [vim-plug](https://github.com/junegunn/vim-plug)
+* [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
+* [reattach-to-user-namespace](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
+* [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 
 ## Notes
 zsh theme: `pygmalion`
+
+Font: `Roboto Nerd Font Complete`
 
 List available colours:
 
