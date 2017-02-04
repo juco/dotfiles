@@ -85,3 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export TERM=xterm-256color # 256 colors
+export POWERLINE_CONFIG_COMMAND=/Users/juco/Library/Python/2.7/bin/powerline-config

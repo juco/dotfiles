@@ -22,6 +22,7 @@ For vim-monster:
 * [the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
 * [reattach-to-user-namespace](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard)
 * [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+* [powerline](https://github.com/powerline/powerline)
 
 ## Notes
 zsh theme: `pygmalion`
