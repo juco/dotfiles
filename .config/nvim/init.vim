@@ -13,13 +13,12 @@ Plug 'jistr/vim-nerdtree-tabs'              " One NERDTree to rule them all
 Plug 'vim-airline/vim-airline'              " Sexy status bar
 Plug 'vim-airline/vim-airline-themes'       " Airline themese
 Plug 'scrooloose/nerdcommenter'             " Multi-line comments
-Plug 'scrooloose/syntastic'                 " Syntax checking
 Plug 'tpope/vim-fugitive'                   " Git wrapper
 Plug 'christoomey/vim-tmux-navigator'       " Pane navigation tmux/vim
 Plug 'rizzatti/dash.vim'                    " Dashing
-"Plug 'Valloric/YouCompleteMe'               " You Complete Me
 Plug 'airblade/vim-gitgutter'               " Git Gutter
 Plug 'Yggdroot/indentLine'                  " Lines showing indents
+Plug 'w0rp/ale'                             " Linting
 
 " Shougo <3
 Plug 'Shougo/vimproc.vim'                   " Async tasks
@@ -46,7 +45,6 @@ Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
-Plug 'mtscout6/syntastic-local-eslint.vim'  " Use local eslint
 Plug 'sunaku/vim-ruby-minitest'             " Minitest omnicomplete
 Plug 'osyo-manga/vim-monster'               " Ruby omnicomplete
 
