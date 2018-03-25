@@ -24,6 +24,9 @@ For vim-monster:
 * [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 * [powerline](https://github.com/powerline/powerline)
 
+## Powerline install
+Will need `psutil` for uptime: `pip3 install psutil`
+
 ## Notes
 zsh theme: `pygmalion`
 
