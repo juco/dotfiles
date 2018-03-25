@@ -15,38 +15,37 @@ Plug 'vim-airline/vim-airline-themes'       " Airline themese
 Plug 'scrooloose/nerdcommenter'             " Multi-line comments
 Plug 'tpope/vim-fugitive'                   " Git wrapper
 Plug 'christoomey/vim-tmux-navigator'       " Pane navigation tmux/vim
-Plug 'rizzatti/dash.vim'                    " Dashing
 Plug 'airblade/vim-gitgutter'               " Git Gutter
-Plug 'Yggdroot/indentLine'                  " Lines showing indents
+"Plug 'Yggdroot/indentLine'                  " Lines showing indents
 Plug 'w0rp/ale'                             " Linting
 
+
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Shougo <3
-Plug 'Shougo/vimproc.vim'                   " Async tasks
-Plug 'Shougo/unite.vim'                     " Unite
+"Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/vimproc.vim'                   " Async tasks
+"Plug 'Shougo/unite.vim'                     " Unite
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'ryanoasis/vim-devicons'               " icon fonts
 
 " Colours
 Plug 'mhartington/oceanic-next'
-Plug 'othree/yajs.vim'
+"Plug 'othree/yajs.vim'
 Plug 'othree/html5.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 
 " -Language specific-
 Plug 'vim-ruby/vim-ruby'                    " Some ruby sexyness
-Plug 'tpope/vim-rails'                      " Rails FTW
+"Plug 'tpope/vim-rails'                      " Rails FTW
 Plug 'tpope/vim-endwise'                    " Matching end's
 Plug 'kchmck/vim-coffee-script'             " Coffeescript
-Plug 'groenewege/vim-less'                  " LESS
 Plug 'cakebaker/scss-syntax.vim'            " SCSS
-Plug 'derekwyatt/vim-scala'                 " Scala
-Plug 'godlygeek/tabular'                    " Alignment
 Plug 'Valloric/MatchTagAlways'              " HTML Matching tags
 Plug 'pangloss/vim-javascript'              " JS syntax etc.
 Plug 'mxw/vim-jsx'                          " JSX
-Plug 'sunaku/vim-ruby-minitest'             " Minitest omnicomplete
-Plug 'osyo-manga/vim-monster'               " Ruby omnicomplete
 
 call plug#end()
 
@@ -68,6 +67,7 @@ let g:airline_theme='oceanicnext'
 " Airline fonts
 let g:airline_powerline_fonts = 1
 
+" Boot deoplete
 call deoplete#enable()
 
 " Tabs
@@ -160,8 +160,18 @@ nmap <leader>gr call ReloadAllBuffers()
 " Complete minitest - C-X C-U
 set completefunc=syntaxcomplete#Complete
 
-source ~/.vimunite
+" Ale config
+let g:ale_set_highlights = 0
+
+" fzf mappings
+map ff :Files<cr>
+map fg :GFiles<cr>
+map fb :Buffers<cr>
+map fl :Lines<cr>
+map ft :Tags<cr>
+map fs :Ag<cr>
+map gs :GFiles?<cr>
+
 source ~/.vimtmux
 source ~/.vimspaces
-source ~/.vimsyntastic
 source ~/.vimmatchtags
