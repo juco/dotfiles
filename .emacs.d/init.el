@@ -1,0 +1,351 @@
+;; Package configs
+(require 'package)
+(setq package-enable-at-startup nil)
+(setq package-archives '(("org"   . "http://orgmode.org/elpa/")
+                         ("gnu"   . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+
+;; Bootstrap `use-package`
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
+
+;; PATH
+(let ((path (shell-command-to-string ". ~/.bash_profile; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path 
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
+
+;; Some term enhancement
+(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+  (if (memq (process-status proc) '(signal exit))
+      (let ((buffer (process-buffer proc)))
+        ad-do-it
+        (kill-buffer buffer))
+    ad-do-it))
+(ad-activate 'term-sentinel)
+
+(defadvice ansi-term (before force-bash)
+  (interactive (list "/bin/zsh")))
+(ad-activate 'ansi-term)
+
+;; Other configs
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+;; ruler
+(require 'fill-column-indicator)
+(setq-default fill-column 80)
+(setq fci-rule-width 1)
+(add-hook 'prog-mode-hook 'turn-on-fci-mode)
+(add-hook 'text-mode-hook 'turn-on-fci-mode)
+
+(defun on-off-fci-before-company(command)
+  (when (string= "show" command)
+    (turn-off-fci-mode))
+  (when (string= "hide" command)
+    (turn-on-fci-mode)))
+
+(advice-add 'company-call-frontends :before #'on-off-fci-before-company)
+
+;; magit
+(use-package magit
+  :ensure t
+  :config
+  (setq git-magit-status-fullscreen t))
+(require 'evil-magit)
+
+;; indentation
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq c-basic-offset n)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
+(my-setup-indent 2)
+(setq-default indent-tabs-mode nil)
+(setq tab-width 2)
+
+;; Splash Screen
+(setq inhibit-startup-screen t)
+(setq initial-scratch-message ";; Happy Hacking")
+
+;; Show matching parens
+(setq show-paren-delay 0)
+(show-paren-mode  1)
+;; Keybinding for term mode
+;(add-hook 'term-mode
+;          (lambda () (global-set-key (kbd "s-v") 'term-paste)))
+
+;; UI configurations
+(scroll-bar-mode -1)
+(tool-bar-mode   -1)
+(tooltip-mode    -1)
+(menu-bar-mode   -1)
+(global-linum-mode 1)
+(add-to-list 'default-frame-alist '(font . "Iosevka-13"))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+
+;; Vim mode
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1))
+
+(use-package evil-escape
+  :ensure t
+  :init
+  ;(setq-default evil-escape-key-sequence "jj")
+  :config
+  (evil-escape-mode 1))
+(global-set-key (kbd "<escape>")      'keyboard-escape-quit)
+(require 'key-chord)(key-chord-mode 1) ; turn on key-chord-mode
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+;(key-chord-define evil-scroll-line-to-center ";;" 'evil-normal-state)
+
+;; Anzu for search matching
+(use-package anzu
+  :ensure t
+  :config
+  (global-anzu-mode 1)
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+  (global-set-key [remap query-replace] 'anzu-query-replace))
+
+;; Theme
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-one t)
+  
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  )
+
+(use-package doom-modeline
+      :ensure t
+      :defer t
+      :hook (after-init . doom-modeline-init))
+
+;; Helm
+(use-package helm
+  :ensure t
+  :init
+  (setq helm-M-x-fuzzy-match t
+	helm-mode-fuzzy-match t
+	helm-buffers-fuzzy-matching t
+	helm-recentf-fuzzy-match t
+	helm-locate-fuzzy-match t
+	helm-semantic-fuzzy-match t
+	helm-imenu-fuzzy-match t
+	helm-completion-in-region-fuzzy-match t
+	helm-candidate-number-list 80
+	;helm-split-window-in-side-p t
+	helm-move-to-line-cycle-in-source t
+	helm-echo-input-in-header-line t
+	helm-autoresize-max-height 0
+	helm-autoresize-min-height 20)
+  :config
+  (helm-mode 1))
+
+;; RipGrep
+(use-package helm-rg :ensure t)
+
+;; Projectile
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-require-project-root nil)
+  :config
+  (projectile-mode 1))
+
+;; Helm Projectile
+(use-package helm-projectile
+  :ensure t
+  :init
+  (setq helm-projectile-fuzzy-match t)
+  (setq projectile-project-search-path '("~/projects/" "~/work/"))
+  :config
+  (helm-projectile-on))
+
+;; All The Icons
+(use-package all-the-icons :ensure t)
+
+;; NeoTree
+(use-package neotree
+  :ensure t
+  :init
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+;; Which Key
+(use-package which-key
+  :ensure t
+  :init
+  (setq which-key-separator " ")
+  (setq which-key-prefix-prefix "+")
+  :config
+  (which-key-mode))
+
+(defun spacemacs/toggle-maximize-buffer ()
+  "Maximize buffer"
+  (interactive)
+  (if (and (= 1 (length (window-list)))
+           (assoc ?_ register-alist))
+      (jump-to-register ?_)
+    (progn
+      (window-configuration-to-register ?_)
+      (delete-other-windows))))
+
+;; Custom keybinding
+(use-package general
+  :ensure t
+  :config (general-define-key
+  :states '(normal visual insert emacs)
+  :prefix "SPC"
+  :non-normal-prefix "M-SPC"
+  "/"   '(helm-projectile-ag :which-key "ripgrep")
+  "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
+  "SPC" '(helm-M-x :which-key "M-x")
+  "pf"  '(helm-projectile-find-file :which-key "find files")
+  "pp"  '(helm-projectile-switch-project :which-key "switch project")
+  "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
+  "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+  ;; Buffers
+  "bb"  '(helm-mini :which-key "buffers list")
+  ;; Flycheck errors
+  "el"  '(flycheck-list-errors :which-key "list errors")
+  ;; Git
+  "gs" '(magit-status :which-key "git status")
+  ;; Window
+  "wl"  '(windmove-right :which-key "move right")
+  "wh"  '(windmove-left :which-key "move left")
+  "wk"  '(windmove-up :which-key "move up")
+  "wm"  '(spacemacs/toggle-maximize-buffer :which-key "maximize")
+  "wj"  '(windmove-down :which-key "move bottom")
+  "w/"  '(split-window-right :which-key "split right")
+  "w-"  '(split-window-below :which-key "split bottom")
+  "wd"  '(delete-window :which-key "delete window")
+  "qz"  '(delete-frame :which-key "delete frame")
+  "qq"  '(kill-emacs :which-key "quit")
+  ;; Spelling
+  "sb"  '(ispell-buffer :which-key "spell buffer")
+  "sw"  '(ispell-word :which-key "spell word")
+  ;; NeoTree
+  "ft"  '(neotree-toggle :which-key "toggle neotree")
+  ;; Others
+  "at"  '(ansi-term :which-key "open terminal")
+))
+
+;; Fancy titlebar for MacOS
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+(setq ns-use-proxy-icon  nil)
+(setq frame-title-format nil)
+ 
+;; Flycheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*Flycheck errors*" eos)
+              (display-buffer-reuse-window
+               display-buffer-in-side-window)
+              (side            . bottom)
+              (reusable-frames . visible)
+              (window-height   . 0.33)))
+
+;; LSP
+(use-package lsp-mode
+  :ensure t
+  :init
+  (add-hook 'prog-major-mode #'lsp-prog-major-mode-enable))
+
+(use-package lsp-ui
+  :ensure t
+  :init
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+;; Company mode
+(use-package company
+:ensure t
+:init
+(setq company-minimum-prefix-length 3)
+(setq company-auto-complete nil)
+(setq company-idle-delay 0)
+(setq company-require-match 'never)
+(setq company-frontends
+  '(company-pseudo-tooltip-unless-just-one-frontend
+    company-preview-frontend
+    company-echo-metadata-frontend))
+(setq tab-always-indent 'complete)
+(defvar completion-at-point-functions-saved nil)
+:config
+(global-company-mode 1)
+(define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+(define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)
+(define-key company-active-map (kbd "S-TAB") 'company-select-previous)
+(define-key company-active-map (kbd "<backtab>") 'company-select-previous)
+(define-key company-mode-map [remap indent-for-tab-command] 'company-indent-for-tab-command)
+(defun company-indent-for-tab-command (&optional arg)
+  (interactive "P")
+  (let ((completion-at-point-functions-saved completion-at-point-functions)
+    	(completion-at-point-functions '(company-complete-common-wrapper)))
+	(indent-for-tab-command arg)))
+
+(defun company-complete-common-wrapper ()
+	(let ((completion-at-point-functions completion-at-point-functions-saved))
+	(company-complete-common))))
+
+(use-package company-lsp
+:ensure t
+:init
+(push 'company-lsp company-backends))
+ 
+;;;;;;;;;;;;;;;;;;;;;;;
+;; Language Supports ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+ 
+;; JavaScript
+(use-package js2-mode
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (setq-default js2-basic-offset 2))
+(use-package tern :ensure t)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#212121" :foreground "#eeffff" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "nil" :family "Iosevka"))))
+ '(font-lock-constant-face ((t (:foreground "#C792EA"))))
+ '(font-lock-keyword-face ((t (:foreground "#2BA3FF" :slant italic))))
+ '(font-lock-preprocessor-face ((t (:inherit bold :foreground "#2BA3FF" :slant italic :weight normal))))
+ '(font-lock-string-face ((t (:foreground "#C3E88D"))))
+ '(font-lock-type-face ((t (:foreground "#FFCB6B"))))
+ '(font-lock-variable-name-face ((t (:foreground "#FF5370"))))
+ '(helm-rg-active-arg-face ((t (:foreground "LightGreen"))))
+ '(helm-rg-file-match-face ((t (:foreground "LightGreen" :underline t))))
+ '(helm-rg-preview-line-highlight ((t (:background "LightGreen" :foreground "black"))))
+ '(mode-line ((t (:background "#191919" :box nil))))
+ '(mode-line-inactive ((t (:background "#282828" :foreground "#5B6268" :box nil)))))
