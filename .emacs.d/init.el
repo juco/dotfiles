@@ -36,6 +36,21 @@
 ;; Other configs
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq ring-bell-function 'ignore)
+
+;; UI configurations
+(scroll-bar-mode -1)
+(tool-bar-mode   -1)
+(tooltip-mode    -1)
+(menu-bar-mode   -1)
+(global-linum-mode 1)
+;; (add-to-list 'default-frame-alist '(font . "Iosevka-13"))
+(add-to-list 'default-frame-alist '(font . "Overpass Mono-13"))
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
+
+;; Allow hash to be entered  
+(global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
 
 ;; ruler
 (require 'fill-column-indicator)
@@ -51,6 +66,12 @@
     (turn-on-fci-mode)))
 
 (advice-add 'company-call-frontends :before #'on-off-fci-before-company)
+
+;; pdf-tools fix
+(add-hook 'doc-view-mode-hook
+  (lambda ()
+    (linum-mode -1)
+  ))
 
 ;; magit
 (use-package magit
@@ -76,6 +97,7 @@
 (my-setup-indent 2)
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
+(setq-default evil-shift-width 2)
 
 ;; Splash Screen
 (setq inhibit-startup-screen t)
@@ -84,21 +106,19 @@
 ;; Show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode  1)
-;; Keybinding for term mode
-;(add-hook 'term-mode
-;          (lambda () (global-set-key (kbd "s-v") 'term-paste)))
 
-;; UI configurations
-(scroll-bar-mode -1)
-(tool-bar-mode   -1)
-(tooltip-mode    -1)
-(menu-bar-mode   -1)
-(global-linum-mode 1)
-(add-to-list 'default-frame-alist '(font . "Iosevka-13"))
-(add-to-list 'default-frame-alist '(height . 24))
-(add-to-list 'default-frame-alist '(width . 80))
+;; NeoTree
+(use-package neotree
+  :ensure t
+  :init
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
-;; Vim mode
+;; Treemacs
+;; (use-package treemacs
+;;   :ensure t
+;;   :init)
+
+; Vim mode
 (use-package evil
   :ensure t
   :config
@@ -107,13 +127,11 @@
 (use-package evil-escape
   :ensure t
   :init
-  ;(setq-default evil-escape-key-sequence "jj")
   :config
   (evil-escape-mode 1))
 (global-set-key (kbd "<escape>")      'keyboard-escape-quit)
 (require 'key-chord)(key-chord-mode 1) ; turn on key-chord-mode
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
-;(key-chord-define evil-scroll-line-to-center ";;" 'evil-normal-state)
 
 ;; Anzu for search matching
 (use-package anzu
@@ -128,7 +146,7 @@
   :ensure t
   :config
   (load-theme 'doom-one t)
-  
+
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
   )
@@ -162,6 +180,15 @@
 ;; RipGrep
 (use-package helm-rg :ensure t)
 
+;; Dumb jump
+(use-package dumb-jump :ensure t)
+
+;; Smart parents
+(use-package smartparens
+  :ensure t
+  :init
+  (smartparens-global-mode 1))
+
 ;; Projectile
 (use-package projectile
   :ensure t
@@ -182,12 +209,6 @@
 ;; All The Icons
 (use-package all-the-icons :ensure t)
 
-;; NeoTree
-(use-package neotree
-  :ensure t
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-
 ;; Which Key
 (use-package which-key
   :ensure t
@@ -197,6 +218,8 @@
   :config
   (which-key-mode))
 
+;; Functions
+;; ---------
 (defun spacemacs/toggle-maximize-buffer ()
   "Maximize buffer"
   (interactive)
@@ -207,6 +230,13 @@
       (window-configuration-to-register ?_)
       (delete-other-windows))))
 
+(defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer 
+          (delq (current-buffer) 
+                (remove-if-not 'buffer-file-name (buffer-list)))))
+
 ;; Custom keybinding
 (use-package general
   :ensure t
@@ -214,19 +244,42 @@
   :states '(normal visual insert emacs)
   :prefix "SPC"
   :non-normal-prefix "M-SPC"
-  "/"   '(helm-projectile-ag :which-key "ripgrep")
+  "/"   '(helm-rg :which-key "ripgrep")
   "TAB" '(switch-to-prev-buffer :which-key "previous buffer")
   "SPC" '(helm-M-x :which-key "M-x")
+  ;; Parents
+  "g"   '(:which-key "git")
+  "c"   '(:which-key "comments")
+  "b"   '(:which-key "buffers")
+  "p"   '(:which-key "project")
+  "w"   '(:which-key "windows")
+  "f"   '(:which-key "files")
+  "a"   '(:which-key "utils")
+  "s"   '(:which-key "spell")
+  "q"   '(:which-key "quit")
+  "e"   '(:which-key "errors")
+  "z"   '(:which-key "zoom")
+  ;; Project
   "pf"  '(helm-projectile-find-file :which-key "find files")
   "pp"  '(helm-projectile-switch-project :which-key "switch project")
   "pb"  '(helm-projectile-switch-to-buffer :which-key "switch buffer")
   "pr"  '(helm-show-kill-ring :which-key "show kill ring")
+  ;; Comments
+  "cl"  '(comment-line :which-key "comment line")
+  ;; Jump to definition
+  "jj"  '(dumb-jump-go :which-key "jump to")
+  "jb"  '(dumb-jump-back :which-key "jump back")
   ;; Buffers
   "bb"  '(helm-mini :which-key "buffers list")
+  "bm"  '(kill-other-buffers :which-key "kill others")
+  "bk"  '(kill-buffer :which-key "kill a buffer")
   ;; Flycheck errors
   "el"  '(flycheck-list-errors :which-key "list errors")
   ;; Git
+  "gl" '(magit-log-current :which-key "log branch")
+  "gb" '(magit-blame :which-key "blame")
   "gs" '(magit-status :which-key "git status")
+  "gf" '(magit-log-buffer-file :which-key "file history")
   ;; Window
   "wl"  '(windmove-right :which-key "move right")
   "wh"  '(windmove-left :which-key "move left")
@@ -243,6 +296,8 @@
   "sw"  '(ispell-word :which-key "spell word")
   ;; NeoTree
   "ft"  '(neotree-toggle :which-key "toggle neotree")
+  "z+"  '(text-scale-increase :which-key "zoom in")
+  "z-"  '(text-scale-decrease :which-key "zoom out")
   ;; Others
   "at"  '(ansi-term :which-key "open terminal")
 ))
@@ -252,6 +307,12 @@
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 (setq ns-use-proxy-icon  nil)
 (setq frame-title-format nil)
+
+;; Window resizing
+(global-set-key (kbd "A-<down>") 'enlarge-window)
+(global-set-key (kbd "A-<up>") 'shrink-window)
+(global-set-key (kbd "A-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "A-<right>") 'shrink-window-horizontally)
  
 ;; Flycheck
 (use-package flycheck
@@ -264,6 +325,16 @@
               (side            . bottom)
               (reusable-frames . visible)
               (window-height   . 0.33)))
+
+;; Prettier JS
+;; (use-package prettier-js
+;;   :ensure t)
+;; (setq prettier-js-args '(
+;;   "--trailing-comma" "all"
+;;   "--bracket-spacing" "false"
+;; ))
+;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+;; (add-hook 'web-mode-hook 'prettier-js-mode)
 
 ;; LSP
 (use-package lsp-mode
@@ -331,7 +402,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
+    (pdf-tools org-bullets smartparens jsx-mode dumb-jump circe yaml-mode treemacs dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
