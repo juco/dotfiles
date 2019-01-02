@@ -266,11 +266,14 @@
   "pr"  '(helm-show-kill-ring :which-key "show kill ring")
   ;; Comments
   "cl"  '(comment-line :which-key "comment line")
+  ;; Dired
+  "d"  '(dired :which-key "dired")'
   ;; Jump to definition
   "jj"  '(dumb-jump-go :which-key "jump to")
   "jb"  '(dumb-jump-back :which-key "jump back")
   ;; Buffers
-  "bb"  '(helm-mini :which-key "buffers list")
+  "bb"  '(helm-mini :which-key "helm buffers")
+  "bl"  '(list-buffers :which-key "buffer list")'
   "bm"  '(kill-other-buffers :which-key "kill others")
   "bk"  '(kill-buffer :which-key "kill a buffer")
   ;; Flycheck errors
