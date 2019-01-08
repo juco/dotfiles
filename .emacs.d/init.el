@@ -59,6 +59,9 @@
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
 
+;; Delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (defun on-off-fci-before-company(command)
   (when (string= "show" command)
     (turn-off-fci-mode))
