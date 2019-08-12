@@ -115,11 +115,20 @@
 (setq show-paren-delay 0)
 (show-paren-mode  1)
 
-;; NeoTree
-(use-package neotree
+; Dired
+(use-package dired
+  :ensure nil
+  :config
+  (when (string= system-type "darwin")
+    (setq dired-use-ls-dired t
+          insert-directory-program "/usr/local/bin/gls"))
+  :custom
+  (dired-listing-switches "-aBhl --group-directories-first"))
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
   :ensure t
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+  :config (treemacs-icons-dired-mode))
 
 ; Startup dashboard
 (use-package dashboard
@@ -180,7 +189,7 @@
   :config
   (load-theme 'doom-one t)
 
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+  (setq doom-themes-enable-bold t  ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled
   )
 
@@ -439,9 +448,10 @@
  '(custom-safe-themes
    (quote
     ("1c082c9b84449e54af757bcae23617d11f563fc9f33a832a8a2813c4d7dfb652" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" default)))
+ '(dired-listing-switches "-aBhl --group-directories-first")
  '(package-selected-packages
    (quote
-    (dashboard rjsx-mode coffee-mode docker exec-path-from-shell pdf-tools org-bullets smartparens jsx-mode dumb-jump circe yaml-mode treemacs dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
+    (diredful dired-rainbow all-the-icons-dired dired-icon dashboard rjsx-mode coffee-mode docker exec-path-from-shell pdf-tools org-bullets smartparens jsx-mode dumb-jump circe yaml-mode treemacs dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
