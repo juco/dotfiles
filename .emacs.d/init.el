@@ -53,14 +53,11 @@
 (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
 
 ;; ruler
-(require 'fill-column-indicator)
-(setq-default fill-column 80)
+;;(require 'fill-column-indicator)
+;;(setq-default fill-column 80)
 (setq fci-rule-width 1)
 (add-hook 'prog-mode-hook 'turn-on-fci-mode)
 (add-hook 'text-mode-hook 'turn-on-fci-mode)
-
-;; Delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (defun on-off-fci-before-company(command)
   (when (string= "show" command)
@@ -76,12 +73,20 @@
     (linum-mode -1)
   ))
 
+(use-package fill-column-indicator
+  :ensure t
+  :init
+  (setq-default fill-column 80))
+
 ;; magit
 (use-package magit
   :ensure t
   :config
   (setq git-magit-status-fullscreen t))
-(require 'evil-magit)
+(use-package evil-magit
+  :ensure t
+  :init)
+;;(require 'evil-magit)
 
 ;; indentation
 (defun my-setup-indent (n)
@@ -116,10 +121,29 @@
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
-;; Treemacs
-;; (use-package treemacs
-;;   :ensure t
-;;   :init)
+; Startup dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
+;; Set the title
+(setq dashboard-banner-logo-title "Emacs ftw")
+(setq dashboard-startup-banner 'logo)
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents  . 5)
+                        (projects . 5)
+                        (bookmarks . 5)
+                        (agenda . 5)
+                        (registers . 5)))
+(setq dashboard-set-navigator t)
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+;; (setq dashboard-init-info "Try not to break it this time")
+;; ;; (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
+;;                                                    :height 1.1
+;;                                                    :v-adjust -0.05
+;;                                                    :face 'font-lock-keyword-face))
 
 ; Vim mode
 (use-package evil
@@ -133,8 +157,15 @@
   :config
   (evil-escape-mode 1))
 (global-set-key (kbd "<escape>")      'keyboard-escape-quit)
-(require 'key-chord)(key-chord-mode 1) ; turn on key-chord-mode
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+
+; Keychord
+(use-package key-chord
+  :ensure t
+  :init
+  :config
+  (key-chord-mode 1))
+
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state) 
 
 ;; Anzu for search matching
 (use-package anzu
@@ -406,9 +437,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("1c082c9b84449e54af757bcae23617d11f563fc9f33a832a8a2813c4d7dfb652" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" default)))
  '(package-selected-packages
    (quote
-    (pdf-tools org-bullets smartparens jsx-mode dumb-jump circe yaml-mode treemacs dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
+    (dashboard rjsx-mode coffee-mode docker exec-path-from-shell pdf-tools org-bullets smartparens jsx-mode dumb-jump circe yaml-mode treemacs dockerfile-mode evil-magit magit fill-column-indicator helm-ag key-chord doom-modeline tern js2-mode spaceline company-lsp company lsp-ui lsp-mode flycheck general which-key neotree helm-projectile projectile helm-rg helm doom-themes anzu evil-escape evil use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
