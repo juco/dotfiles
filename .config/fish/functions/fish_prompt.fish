@@ -59,3 +59,4 @@ function fish_prompt
 
   printf '%s%s%s %s%s%s%s%s ' (set_color --bold white) (prompt_pwd) (set_color --bold 77D8E6) '❱' (set_color --bold EEFD7A) '❱' (set_color --bold EF78A1) '❱'
 end
+
