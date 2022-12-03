@@ -1,62 +1,7 @@
-function xfish_prompt --description 'Write out the prompt'
-    set laststatus $status
-
-    if set -l git_branch (command git symbolic-ref HEAD 2>/dev/null | string replace refs/heads/ '')
-        set git_branch (set_color -o blue)"$git_branch"
-        if command git diff-index --quiet HEAD --
-            if set -l count (command git rev-list --count --left-right $upstream...HEAD 2>/dev/null)
-                echo $count | read -l ahead behind
-                if test "$ahead" -gt 0
-                    set git_status "$git_status"(set_color red)⬆
-                end
-                if test "$behind" -gt 0
-                    set git_status "$git_status"(set_color red)⬇
-                end
-            end
-            for i in (git status --porcelain | string sub -l 2 | uniq)
-                switch $i
-                    case "."
-                        set git_status "$git_status"(set_color green)✚
-                    case " D"
-                        set git_status "$git_status"(set_color red)✖
-                    case "*M*"
-                        set git_status "$git_status"(set_color green)✱
-                    case "*R*"
-                        set git_status "$git_status"(set_color purple)➜
-                    case "*U*"
-                        set git_status "$git_status"(set_color brown)═
-                    case "??"
-                        set git_status "$git_status"(set_color red)≠
-                end
-            end
-        else
-            set git_status (set_color green):
-        end
-        set git_info "(git$git_status$git_branch"(set_color white)")"
-    end
-
-    # Disable PWD shortening by default.
-    set -q fish_prompt_pwd_dir_length
-    or set -lx fish_prompt_pwd_dir_length 0
-
-    printf '%s%s%s%s%s%s%s%s%s%s%s%s%s' (set_color -o white) '❰' (set_color green) $USER (set_color white) '❙' (set_color yellow) (prompt_pwd) (set_color white) $git_info (set_color white) '❱' (set_color white)
-    if test $laststatus -eq 0
-        printf "%s✔%s≻%s " (set_color -o green) (set_color white) (set_color normal)
-    else
-        printf "%s✘%s≻%s " (set_color -o red) (set_color white) (set_color normal)
-    end
-end
-
 function fish_prompt
   set -q fish_prompt_pwd_dir_length
   or set -lx fish_prompt_pwd_dir_length 0
 
-  if set -l git_branch (command git symbolic-ref HEAD 2>/dev/null | string replace refs/heads/ '')
-    set git_branch "$git_branch"
-
-    set git_info (set_color white) "[$git_branch]"
-  end
-
-  printf '%s%s%s %s%s%s%s%s ' (set_color --bold white) (prompt_pwd) (set_color --bold 77D8E6) '❱' (set_color --bold EEFD7A) '❱' (set_color --bold EF78A1) '❱'
+  printf '%s%s%s%s%s%s %s%s%s%s%s%s ' (set_color --bold D2FFEA) ' ' (set_color --bold white) (prompt_pwd) (set_color EEFD7A) (fish_git_prompt) (set_color --bold 77D8E6) '❱' (set_color --bold EEFD7A) '❱' (set_color --bold EF78A1) '❱'
 end
 
