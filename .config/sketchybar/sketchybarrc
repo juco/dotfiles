@@ -135,8 +135,8 @@ sketchybar --add space beaker left \
 
 sketchybar --add item space_separator left                         \
            --set space_separator icon=                            \
-                                 background.padding_left=15        \
-                                 background.padding_right=15       \
+                                 background.padding_left=8        \
+                                 background.padding_right=8       \
                                  label.drawing=off                 \
                                                                    \
            --add item front_app  left                              \
@@ -151,12 +151,23 @@ sketchybar --add item space_separator left                         \
 
 sketchybar --add item clock right                        \
            --set clock   update_freq=10                  \
+                         icon=                          \
+                         label.color=0xff8BC4CE          \
+                         icon.color=0xff8BC4CE           \
+                         background.padding_left=8       \
                          script="$PLUGIN_DIR/clock.sh"   \
                                                          \
            --add item battery right                      \
            --set battery script="$PLUGIN_DIR/battery.sh" \
+                         background.padding_left=8       \
                          update_freq=10                  \
            --subscribe battery system_woke
+
+sketchybar --add item btc right                      \
+           --set btc icon=                           \
+                        label.color=0xffF0FD8C          \
+                        icon.color=0xffF0FD8C           \
+                        script="$PLUGIN_DIR/bitcoin.sh"  
 
 
 
