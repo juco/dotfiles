@@ -50,13 +50,12 @@ sketchybar --add space home left \
           --set home \
             associated_space=1 \
             icon= \
-            icon.padding_left=8 \
-            icon.padding_right=8 \
-            background.drawing=off \
-            background.padding_left=5 \
-            background.padding_right=5 \
-            background.color=0xff9CDBBD \
-            label.drawing=off \
+            icon.padding_left=16 \
+            icon.padding_right=16 \
+            label.padding_left=0 \
+            label.padding_right=0 \
+            background.color=0xff535E6D \
+            background.height=32 \
             script="$PLUGIN_DIR/space.sh" 
 
 # Browser
@@ -64,13 +63,12 @@ sketchybar --add space browser left \
           --set browser \
             associated_space=2 \
             icon= \
-            icon.padding_left=8 \
-            icon.padding_right=8 \
-            background.drawing=off \
-            background.padding_left=5 \
-            background.padding_right=5 \
-            background.color=0xff9CDBBD \
-            label.drawing=off \
+            icon.padding_left=16 \
+            icon.padding_right=16 \
+            label.padding_left=0 \
+            label.padding_right=0 \
+            background.color=0xff535E6D \
+            background.height=32 \
             script="$PLUGIN_DIR/space.sh" 
 
 # Code
@@ -78,13 +76,12 @@ sketchybar --add space code left \
           --set code \
             associated_space=3 \
             icon= \
-            icon.padding_left=8 \
-            icon.padding_right=8 \
-            background.drawing=off \
-            background.padding_left=5 \
-            background.padding_right=5 \
-            background.color=0xff9CDBBD \
-            label.drawing=off \
+            icon.padding_left=16 \
+            icon.padding_right=16 \
+            label.padding_left=0 \
+            label.padding_right=0 \
+            background.color=0xff535E6D \
+            background.height=32 \
             script="$PLUGIN_DIR/space.sh" 
 
 # Beaker
@@ -92,13 +89,12 @@ sketchybar --add space beaker left \
           --set beaker \
             associated_space=4 \
             icon= \
-            icon.padding_left=8 \
-            icon.padding_right=8 \
-            background.drawing=off \
-            background.padding_left=5 \
-            background.padding_right=5 \
-            background.color=0xff9CDBBD \
-            label.drawing=off \
+            icon.padding_left=16 \
+            icon.padding_right=16 \
+            label.padding_left=0 \
+            label.padding_right=0 \
+            background.color=0xff535E6D \
+            background.height=32 \
             script="$PLUGIN_DIR/space.sh" 
 
 
@@ -162,6 +158,12 @@ sketchybar --add item clock right                        \
                          background.padding_left=8       \
                          update_freq=10                  \
            --subscribe battery system_woke
+
+sketchybar --add item volume right                      \
+           --set volume script="$PLUGIN_DIR/volume.sh"  \
+                 background.padding_left=8              \
+                 icon.color=0xffA782F7                  \
+                 label.color=0xffA782F7
 
 sketchybar --add item btc right                      \
            --set btc icon=                           \
